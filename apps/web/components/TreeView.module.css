@@ -1,0 +1,26 @@
+/* components/TreeView.module.css */
+.treeView {
+  font-family: Arial, sans-serif;
+}
+
+.treeNode {
+  margin-left: 20px;
+}
+
+.treeNodeLabel {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.treeNodeLabel.expanded {
+  font-weight: bold;
+}
+
+.toggleIcon {
+  margin-right: 5px;
+}
+
+.treeNodeChildren {
+  margin-left: 20px;
+  border-left: 1px dashed #ccc;
+}
