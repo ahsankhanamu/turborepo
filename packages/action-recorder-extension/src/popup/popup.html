@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Action Recorder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 10px;
+      }
+      button {
+        padding: 5px 10px;
+        margin: 5px;
+      }
+      .action-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .action-buttons {
+        display: flex;
+        gap: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Action Recorder</h1>
+    <button id="start-recording">Start Recording</button>
+    <button id="stop-recording">Stop Recording</button>
+    <button id="replay">Replay</button>
+
+    <h3>Add Assertion:</h3>
+    <button id="assert-visible">Assert Visible</button>
+    <button id="assert-hidden">Assert Hidden</button>
+    <button id="assert-text">Assert Text</button>
+    <button id="assert-value">Assert Value</button>
+    <button id="assert-attribute">Assert Attribute</button>
+
+    <h3>Manage Actions:</h3>
+    <ul id="actions-list"></ul>
+
+    <h3>Execution Logs</h3>
+    <ul id="error-logs"></ul>
+
+    <script>
+      function logError(message) {
+        const errorLogs = document.getElementById('error-logs');
+        const li = document.createElement('li');
+        li.textContent = message;
+        errorLogs.appendChild(li);
+      }
+
+      chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message.type === 'log-error') {
+          logError(message.error);
+        }
+      });
+    </script>
+
+    <script src="popup.bundle.js"></script>
+  </body>
+</html>
