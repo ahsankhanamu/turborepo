@@ -1,0 +1,120 @@
+body {
+font-family: Arial, sans-serif;
+padding: 20px;
+width: 200px;
+background-color: #f9f9f9;
+}
+button {
+padding: 10px;
+background-color: #2ecc40;
+color: white;
+border-radius: 4px;
+cursor: pointer;
+margin-bottom: 10px;
+border: none;
+}
+button:hover {
+opacity: 0.9;
+}
+#iframe-list {
+margin-top: 15px;
+padding: 10px;
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 8px;
+max-height: 200px;
+overflow-y: auto;
+}
+.iframe-entry {
+font-size: 14px;
+margin-bottom: 10px;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 4px;
+background-color: #f0f0f0;
+}
+.iframe-entry h4 {
+margin: 0 0 5px 0;
+font-weight: bold;
+color: #333;
+}
+.element-list {
+font-size: 12px;
+color: #555;
+padding-left: 20px;
+}
+.element-list li {
+margin: 5px 0;
+word-break: break-all;
+}
+.clear-storage {
+background-color: #ff4136; /* Red for clear storage button */
+}
+
+/* ui/popup.css */
+.popup {
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  width: 200px;
+}
+/* ui/popup.css */
+
+.popup-container {
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.popup-heading {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.popup-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}

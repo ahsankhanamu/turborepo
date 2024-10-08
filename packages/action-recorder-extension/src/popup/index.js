@@ -1,3 +1,30 @@
+// Popup Script (popup.js) - Displaying Logs
+document.addEventListener('DOMContentLoaded', displayLogs);
+
+// Listen for log updates
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === 'log-error') {
+    displayLogs();
+  }
+});
+
+chrome.storage.local.get('actions', ({ actions }) => {
+  renderActions(actions || []);
+});
+
+// Function to display logs
+function displayLogs() {
+  chrome.storage.local.get('errorLogs', ({ errorLogs }) => {
+    const errorLogsList = document.getElementById('error-logs');
+    errorLogsList.innerHTML = '';
+    (errorLogs || []).forEach((log) => {
+      const li = document.createElement('li');
+      li.textContent = log;
+      errorLogsList.appendChild(li);
+    });
+  });
+}
+
 document.getElementById('start-recording').addEventListener('click', () => {
   chrome.runtime.sendMessage({ type: 'start-recording' });
 });
@@ -54,15 +81,6 @@ function addAssertion(type) {
   });
 }
 
-function saveAction(action) {
-  chrome.storage.local.get('actions', ({ actions }) => {
-    actions = actions || [];
-    actions.push(action);
-    chrome.storage.local.set({ actions });
-    renderActions(actions);
-  });
-}
-
 function renderActions(actions) {
   const actionsList = document.getElementById('actions-list');
   actionsList.innerHTML = '';
@@ -79,6 +97,15 @@ function renderActions(actions) {
       </div>
     `;
     actionsList.appendChild(li);
+  });
+}
+
+function saveAction(action) {
+  chrome.storage.local.get('actions', ({ actions }) => {
+    actions = actions || [];
+    actions.push(action);
+    chrome.storage.local.set({ actions });
+    renderActions(actions);
   });
 }
 
@@ -113,10 +140,6 @@ function addSelector(index) {
   });
 }
 
-chrome.storage.local.get('actions', ({ actions }) => {
-  renderActions(actions || []);
-});
-
 function getSelector(element) {
   // Implement a robust selector generation logic
   return '...';
@@ -131,7 +154,6 @@ function addUncheckAction() {
   const selector = prompt('Enter selector for checkbox or radio button to uncheck:');
   saveAction({ type: 'uncheck', selectors: [selector] });
 }
-// Other UI logic for managing actions...
 
 function addWaitTimeoutAction() {
   const timeout = prompt('Enter wait timeout in milliseconds:');

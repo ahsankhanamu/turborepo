@@ -6,4 +6,10 @@ module.exports = {
   parserOptions: {
     project: true,
   },
+  include: [
+    'apps/web/**/*.ts',
+    'apps/web/**/*.tsx',
+    'apps/web/**/*.js', // Add this line to include .js files
+    'apps/web/**/*.jsx', // If you're using JSX, add this too
+  ],
 };

@@ -3,7 +3,6 @@
   "name": "Action Recorder extention",
   "version": "1.0",
   "description": "A Chrome extension to record and replay user actions with advanced features.",
-  "permissions": ["activeTab", "scripting", "storage", "webNavigation"],
   "background": {
     "service_worker": "background.bundle.js"
   },
@@ -29,5 +28,19 @@
       "all_frames": true
     }
   ],
-  "host_permissions": ["<all_urls>"]
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "downloads",
+    "contextMenus",
+    "clipboardWrite",
+    "cookies",
+    "sidePanel",
+    "debugger"
+  ]
 }
