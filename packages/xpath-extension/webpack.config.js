@@ -72,7 +72,7 @@ module.exports = {
       patterns: [
         { from: 'src/manifest.json', to: 'manifest.json' },
         { from: 'src/icons', to: 'icons' },
-        { from: 'src/lib/react*', to: '[name][ext]' },
+        // { from: 'src/lib/react*', to: '[name][ext]' },
         { from: 'src/css/*', to: 'css/[name][ext]' },
       ],
     }),
@@ -83,8 +83,15 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
   },
 };

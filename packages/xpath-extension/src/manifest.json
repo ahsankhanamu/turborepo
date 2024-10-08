@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "xpath extension",
+  "name": "Automation Extension",
   "version": "1.0.0",
   "author": "Ahsan Khan",
   "description": "Generate XPaths for webpage elements.",
@@ -41,10 +41,13 @@
     "storage",
     "activeTab",
     "scripting",
+    "webRequest",
+    "webRequestBlocking",
     "downloads",
     "contextMenus",
     "clipboardWrite",
     "cookies",
-    "sidePanel"
+    "sidePanel",
+    "debugger"
   ]
 }

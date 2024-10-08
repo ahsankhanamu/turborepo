@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Script Manager</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h2>Script Manager</h2>
+    <form id="script-form">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+
+      <label for="script">Script:</label>
+      <textarea id="script" name="script" required></textarea>
+
+      <label for="event">Select Event:</label>
+      <select id="event" name="event" required>
+        <option value="DOMContentLoaded">DOMContentLoaded</option>
+        <option value="beforeUnload">beforeUnload</option>
+        <option value="load">Load</option>
+        <!-- Add other relevant events -->
+      </select>
+
+      <button type="submit">Save Script</button>
+    </form>
+
+    <h3>Saved Scripts</h3>
+    <ul id="script-list"></ul>
+
+    <script src="common.bundle.js"></script>
+    <script src="popup.bundle.js"></script>
+  </body>
+</html>
